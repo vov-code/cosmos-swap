@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+:root {
+  --background: radial-gradient(circle at top left, #050816 0, #020617 40%, #000 100%);
+  --foreground: #e5e7eb;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-space-grotesk);
+  --font-mono: var(--font-jetbrains-mono);
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  color: var(--foreground);
+  background: var(--background);
+  background-attachment: fixed;
+}
+
+.cosmic-body {
+  position: relative;
+  overflow: hidden;
+}
+
+.cosmic-body::before,
+.cosmic-body::after {
+  content: "";
+  position: fixed;
+  inset: -50%;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(96, 165, 250, 0.45) 0, transparent 55%),
+    radial-gradient(circle at 80% 10%, rgba(244, 114, 182, 0.45) 0, transparent 55%),
+    radial-gradient(circle at 10% 80%, rgba(56, 189, 248, 0.25) 0, transparent 55%),
+    radial-gradient(circle at 85% 75%, rgba(129, 140, 248, 0.35) 0, transparent 55%);
+  mix-blend-mode: screen;
+  opacity: 0.9;
+  z-index: -2;
+}
+
+.cosmic-body::after {
+  background-image:
+    radial-gradient(1px 1px at 10% 20%, rgba(248, 250, 252, 0.9), transparent),
+    radial-gradient(1px 1px at 30% 80%, rgba(248, 250, 252, 0.8), transparent),
+    radial-gradient(1px 1px at 70% 30%, rgba(248, 250, 252, 0.85), transparent),
+    radial-gradient(1px 1px at 90% 70%, rgba(248, 250, 252, 0.7), transparent),
+    radial-gradient(2px 2px at 20% 60%, rgba(244, 114, 182, 0.8), transparent),
+    radial-gradient(2px 2px at 80% 40%, rgba(56, 189, 248, 0.8), transparent);
+  opacity: 0.6;
+  filter: blur(0.3px);
+  z-index: -1;
+}
+
+.glass-panel {
+  @apply rounded-3xl border border-white/10 bg-slate-950/60 shadow-[0_0_40px_rgba(15,23,42,0.9)] backdrop-blur-2xl;
+}
+
+.cosmic-gradient-text {
+  background-image: linear-gradient(
+    120deg,
+    #e0f2fe,
+    #bfdbfe,
+    #c4b5fd,
+    #f9a8d4,
+    #f97316
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.cosmic-orbit {
+  position: relative;
+}
+
+.cosmic-orbit::before {
+  content: "";
+  position: absolute;
+  inset: -60%;
+  border-radius: 9999px;
+  border-width: 1px;
+  border-style: dashed;
+  border-color: rgba(148, 163, 184, 0.2);
+  transform: rotate(-8deg);
+}
